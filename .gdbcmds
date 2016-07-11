@@ -1,0 +1,34 @@
+echo \n
+echo connecting to target\n
+echo --------------------\n
+target remote localhost:3333
+echo \n
+echo resetting the target\n
+echo --------------------\n
+monitor reset init
+file out/k60_demo.elf
+echo \n
+echo loading the debug file\n 
+echo ----------------------\n
+load
+echo \n
+echo resetting target again\n
+echo ----------------------\n
+monitor reset init
+echo \n
+#echo setting breakpoint at main.c line 31\n
+#b main.c:15
+#echo \n
+#echo Continuing...\n
+#c
+#echo \n
+#echo We hit a breakpoint\nprinting the value of blink ...\n
+#p blink
+#echo \n
+echo disconnecting from target\n
+echo -------------------------\n
+disconnect
+echo \n
+echo quiting gdb\n
+echo \n\n
+quit
