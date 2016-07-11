@@ -25,7 +25,7 @@ int main(void){
 			data = uart_read();
 			uartsend(data);
 		}
-		delay();
+		delay();	
 	}
 }
 
