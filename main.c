@@ -8,14 +8,13 @@
 #include "main.h"
 
 int main(void){
-	uint8_t blink=0, data;
+	uint8_t blink=1, data;
 	//initialize system
 	SystemInit();
 	//initialize ports
 	gpio_init();
 	//initialize a serial port
 	init_uart(UART5_BASE_PTR,periph_clk_khz,115200);
-
 	//Loop forever
 	while(1)
 	{
@@ -38,7 +37,8 @@ void delay(void)
 
   for(i=0; i<1000; i++)
   {
-	for(j=0; j<3000; j++)
-      __asm__("nop");
+	for(j=0; j<1000; j++){
+	 __asm__("nop");
+	}
   }
 }

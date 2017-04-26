@@ -21,6 +21,7 @@ extern void toggle_LED4(void);
 */
 void gpio_init(void)
 {
+	SIM_SCGC5 |= (SIM_SCGC5_PORTA_MASK | SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTC_MASK | SIM_SCGC5_PORTD_MASK | SIM_SCGC5_PORTE_MASK);
 	//PortA pins 10, 11, 28 and 29 as alt1=GPIO
 	PORTA_PCR10 = PORT_PCR_MUX(0x01);
 	PORTA_PCR11 = PORT_PCR_MUX(0x01);
@@ -34,14 +35,14 @@ void gpio_init(void)
 	//for LEDs (pin 11, 28, 29 and 10), 
 	//Port E UART5(PTE8 TX)
 	//GPIOA->PDDR.bit_reg.bit11 = out;
-	GPIOA_PDDR |= GPIO_PDDR_PDD(11);
+	GPIOA_PDDR |= GPIO_PDDR_PDD(1<<11);
 	//GPIOA->PDDR.bit_reg.bit28 = out;
-	GPIOA_PDDR |= GPIO_PDDR_PDD(28);
+	GPIOA_PDDR |= GPIO_PDDR_PDD(1<<28);
 	//GPIOA->PDDR.bit_reg.bit29 = out;
-	GPIOA_PDDR |= GPIO_PDDR_PDD(29);
+	GPIOA_PDDR |= GPIO_PDDR_PDD(1<<29);
 	//GPIOA->PDDR.bit_reg.bit10 = out;
-	GPIOA_PDDR |= GPIO_PDDR_PDD(10); 
-	GPIOE_PDDR = GPIO_PDDR_PDD(8);
+	GPIOA_PDDR |= GPIO_PDDR_PDD(1<<10); 
+	GPIOE_PDDR = GPIO_PDDR_PDD(1<<8);
 	//No need to configure GPIO pins (UART5_RX) as an input, 
 	//by default all pins are inputs
 
