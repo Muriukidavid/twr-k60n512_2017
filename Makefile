@@ -113,7 +113,8 @@ $(OBJ_FOLDER)$(TARGET).$(TARGET_EXT): $(C_OBJS) $(S_OBJS)
 clean:
 	@echo 'Removing entire out directory'
 	@echo '-----------------------------'
-	$(RM) $(TARGET).$(TARGET_EXT) $(TARGET).bin $(TARGET).map $(OBJ_FOLDER)*.* $(OBJ_FOLDER)
+	#$(RM) $(TARGET).$(TARGET_EXT) $(TARGET).bin $(TARGET).map $(OBJ_FOLDER)*.* $(OBJ_FOLDER)
+	$(RM) $(OBJ_FOLDER)*.* $(OBJ_FOLDER)
 	@echo ' '
 
 print_size:
